@@ -48,22 +48,22 @@ namespace Bambot.Etc
         }
         
         public PasswdEntry this[string userName] => RowsByUser[userName];
-        private Dictionary<int, PasswdEntry> _rowsByUserId;
+        private Dictionary<uint, PasswdEntry> _rowsByUserId;
         private readonly object _rowsByUserIdLock = new object();
-        protected Dictionary<int, PasswdEntry> RowsByUserId
+        protected Dictionary<uint, PasswdEntry> RowsByUserId
         {
             get
             {
                 return _rowsByUserIdLock.DoubleCheckLock(ref _rowsByUserId, () =>
                 {
-                    Dictionary<int, PasswdEntry> result = new Dictionary<int, PasswdEntry>();
+                    Dictionary<uint, PasswdEntry> result = new Dictionary<uint, PasswdEntry>();
                     Rows.Each(passwdEntry => result.Add(passwdEntry.UserId, passwdEntry));
                     return result;
                 });
             }
         }
 
-        public int NextUserId()
+        public uint NextUserId()
         {
             return RowsByUserId.Keys.ToArray().Largest() + 1;
         }

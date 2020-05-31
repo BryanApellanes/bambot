@@ -47,22 +47,22 @@ namespace Bambot.Etc
         }
         
         public GroupEntry this[string groupName] => RowsByGroup[groupName];
-        private Dictionary<int, GroupEntry> _rowsByGroupId;
+        private Dictionary<uint, GroupEntry> _rowsByGroupId;
         private readonly object _rowsByGroupIdLock = new object();
-        protected Dictionary<int, GroupEntry> RowsByGroupId
+        protected Dictionary<uint, GroupEntry> RowsByGroupId
         {
             get
             {
                 return _rowsByGroupIdLock.DoubleCheckLock(ref _rowsByGroupId, () =>
                 {
-                    Dictionary<int, GroupEntry> result = new Dictionary<int, GroupEntry>();
+                    Dictionary<uint, GroupEntry> result = new Dictionary<uint, GroupEntry>();
                     Rows.Each(groupEntry => result.Add(groupEntry.GroupId, groupEntry));
                     return result;
                 });
             }
         }
 
-        public int NextGroupId()
+        public uint NextGroupId()
         {
             return RowsByGroupId.Keys.ToArray().Largest() + 1;
         }

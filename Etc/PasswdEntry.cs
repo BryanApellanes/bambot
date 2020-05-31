@@ -15,8 +15,8 @@ namespace Bambot.Etc
         
         public string UserName { get; set; }
         public string Password { get; set; }
-        public int UserId { get; set; }
-        public int GroupId { get; set; }
+        public uint UserId { get; set; }
+        public uint GroupId { get; set; }
         public string Comment { get; set; }
         public string HomeDirectory { get; set; }
         public string CommandShell { get; set; }
@@ -39,8 +39,8 @@ namespace Bambot.Etc
             {
                 UserName = split[0],
                 Password = split[1],
-                UserId = int.Parse(split[2]),
-                GroupId = int.Parse(split[3]),
+                UserId = uint.Parse(split[2]),
+                GroupId = uint.Parse(split[3]),
                 Comment = split[4],
                 HomeDirectory = split[5],
                 CommandShell = split[6],

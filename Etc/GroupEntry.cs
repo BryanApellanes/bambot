@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Bam.Net;
 
@@ -15,9 +16,45 @@ namespace Bambot.Etc
         
         public string GroupName { get; set; }
         public string Password { get; set; }
-        public int GroupId { get; set; }
-        public string Users { get; set; }
+        public uint GroupId { get; set; }
 
+        private HashSet<string> _users;
+        private readonly object _usersLock = new object();
+        public string Users
+        {
+            get => string.Join(",", _users.ToArray());
+            set
+            {
+                lock (_usersLock)
+                {
+                    _users = new HashSet<string>(value.Split(','));
+                }
+            } 
+        }
+
+        public GroupEntry AddUser(string userName)
+        {
+            lock (_usersLock)
+            {
+                _users.Add(userName);
+                return this;
+            }
+        }
+
+        public bool IsMember(string userName)
+        {
+            return _users.Contains(userName);
+        }
+        
+        /// <summary>
+        /// Return users as an array
+        /// </summary>
+        /// <returns></returns>
+        public string[] GetUsers()
+        {
+            return _users.ToArray();
+        }
+        
         public override string ToString()
         {
             return $"{GroupName}:{Password}:{GroupId}:{Users}";
@@ -36,7 +73,7 @@ namespace Bambot.Etc
             {
                 GroupName = split[0],
                 Password = split[1],
-                GroupId = int.Parse(split[2]),
+                GroupId = uint.Parse(split[2]),
                 Users = split[3],
             };
         }
