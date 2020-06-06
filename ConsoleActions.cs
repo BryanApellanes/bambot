@@ -52,5 +52,19 @@ namespace Bam.Net.Application
             OutLine(Config.Current.File.ReadAllText());
             Thread.Sleep(1000);
         }
+
+        [ConsoleAction("deploy", "Deploy bambot to the specified host")]
+        public void Deploy()
+        {
+            // copy files
+            // start bambot
+            throw new NotImplementedException();
+        }
+
+        [ConsoleAction("cpr")]
+        public void CardiopulmonaryResuscitation()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
