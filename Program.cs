@@ -8,7 +8,7 @@ using Bam.Net.Testing;
 namespace Bam.Net.Application
 {
     [Serializable]
-    public class Program : CommandLineTestInterface
+    public class Program : CommandLineTool
     {
         static void Main(string[] args)
         {
