@@ -29,6 +29,15 @@ namespace Bam.Net.Application
             throw new System.NotImplementedException();
         }
 
+        public BamBotAddUserResponse SetPassword(BamBotAddUserRequest request)
+        {
+            EtcUser user = SetPassword(request.UserName, request.Password);
+            return new BamBotAddUserResponse
+            {
+                User = user
+            };
+        }
+        
         [Exclude]
         public EtcGroup AddGroup(string groupName, params string[] members)
         {
