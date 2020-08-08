@@ -1,11 +1,21 @@
+using System;
+using Bam.Net.Services;
 using Bam.Net.Services.Automation;
 using Bam.Remote.Etc;
 
 namespace Bam.Net.Application
 {
-    public class BamBot: IEtcCredentialManager
+    [Proxy("bambot")]
+    public class BamBot: DeployableCommandLineTool, IEtcCredentialManager
     {
-        public IEtcCredentialManager EtcCredentialManager { get; set; }
+        public BamBot(IEtcCredentialManager etcCredentialManager = null)
+        {
+            EtcCredentialManager = etcCredentialManager ?? new EtcCredentialManager();
+        }
+        
+        protected IEtcCredentialManager EtcCredentialManager { get; set; }
+        
+        [Inject]
         public CommandService CommandService { get; set; }
 
         [Exclude]
@@ -16,56 +26,129 @@ namespace Bam.Net.Application
 
         public BamBotAddUserResponse AddUser(BamBotAddUserRequest request)
         {
-            EtcUser user = AddUser(request.UserName, request.Password);
-            return new BamBotAddUserResponse
+            try
             {
-                User = user
-            };
+                EtcUser user = AddUser(request.UserName, request.Password);
+                return new BamBotAddUserResponse(user);
+            }
+            catch (Exception ex)
+            {
+                return new BamBotAddUserResponse(ex);
+            }
         }
         
         [Exclude]
         public EtcUser SetPassword(string userName, string password)
         {
-            throw new System.NotImplementedException();
+            return EtcCredentialManager.SetPassword(userName, password);
         }
 
-        public BamBotAddUserResponse SetPassword(BamBotAddUserRequest request)
+        public BamBotSetPasswordResponse SetPassword(BamBotSetPasswordRequest request)
         {
-            EtcUser user = SetPassword(request.UserName, request.Password);
-            return new BamBotAddUserResponse
+            try
             {
-                User = user
-            };
+                EtcUser user = SetPassword(request.UserName, request.Password);
+                return new BamBotSetPasswordResponse(user);
+            }
+            catch (Exception ex)
+            {
+                return new BamBotSetPasswordResponse(ex);
+            }
         }
-        
+
         [Exclude]
         public EtcGroup AddGroup(string groupName, params string[] members)
         {
-            throw new System.NotImplementedException();
+            return EtcCredentialManager.AddGroup(groupName, members);
+        }
+
+        public BamBotAddGroupResponse AddGroup(BamBotAddGroupRequest request)
+        {
+            try
+            {
+                EtcGroup group = AddGroup(request.GroupName, request.Members);
+                return new BamBotAddGroupResponse(group);
+            }
+            catch (Exception ex)
+            {
+                return new BamBotAddGroupResponse(ex);
+            }
         }
 
         [Exclude]
         public EtcGroup AddGroupMember(string groupName, string member)
         {
-            throw new System.NotImplementedException();
+            return EtcCredentialManager.AddGroupMember(groupName, member);
+        }
+
+        public BamBotAddGroupMemberResponse AddGroupMember(BamBotAddGroupMemberRequest request)
+        {
+            try
+            {
+                EtcGroup group = AddGroupMember(request.GroupName, request.Member);
+                return new BamBotAddGroupMemberResponse(group);
+            }
+            catch (Exception ex)
+            {
+                return new BamBotAddGroupMemberResponse(ex);
+            }
         }
 
         [Exclude]
         public EtcGroup AddGroupMembers(string groupName, params string[] members)
         {
-            throw new System.NotImplementedException();
+            return EtcCredentialManager.AddGroupMembers(groupName, members);
+        }
+
+        public BamBotAddGroupMembersResponse AddGroupMembers(BamBotAddGroupMembersRequest request)
+        {
+            try
+            {
+                EtcGroup group = AddGroupMembers(request.GroupName, request.Members);
+                return new BamBotAddGroupMembersResponse(group);
+            }
+            catch (Exception ex)
+            {
+                return new BamBotAddGroupMembersResponse(ex);
+            }
         }
 
         [Exclude]
         public bool UserExists(string userName)
         {
-            throw new System.NotImplementedException();
+            return EtcCredentialManager.UserExists(userName);
+        }
+
+        public BamBotUserExistsResponse UserExists(BamBotUserExistsRequest request)
+        {
+            try
+            {
+                bool exists = UserExists(request.UserName);
+                return new BamBotUserExistsResponse(exists);
+            }
+            catch (Exception ex)
+            {
+                return new BamBotUserExistsResponse(ex);
+            }
         }
 
         [Exclude]
-        public bool GroupExists(string groupName)
+        public bool GroupExists(string userName)
         {
-            throw new System.NotImplementedException();
+            return EtcCredentialManager.GroupExists(userName);
+        }
+
+        public BamBotGroupExistsResponse GroupExists(BamBotUserExistsRequest request)
+        {
+            try
+            {
+                bool exists = GroupExists(request.UserName);
+                return new BamBotGroupExistsResponse(exists);
+            }
+            catch (Exception ex)
+            {
+                return new BamBotGroupExistsResponse(ex);
+            }
         }
     }
 }

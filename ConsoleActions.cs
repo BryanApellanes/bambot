@@ -17,7 +17,7 @@ using InterSystems.Data.CacheClient.Gateway;
 namespace Bam.Net.Application
 {
     [Serializable]
-    public class ConsoleActions : CommandLineTestInterface
+    public class ConsoleActions : CommandLineTool
     {
         public ServiceProxyServer ServiceProxyServer { get; set; }
         
