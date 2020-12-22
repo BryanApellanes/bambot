@@ -1,23 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <OutputType>Exe</OutputType>
-
-      <PackageId>bambot</PackageId>
-      <Version>0.0.1</Version>
-      <Authors>Bryan Apellanes</Authors>
-      <Company>ThreeHeadz</Company>
-    </PropertyGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <PackageId>bambot</PackageId>
+    <Version>1.0.5-test+5b01c7b</Version>
+    <Authors>Bryan Apellanes</Authors>
+    <Company>ThreeHeadz</Company>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <NuspecFile>bambot.nuspec</NuspecFile>
+    <IntermediatePackDir>$(MSBuildProjectDirectory)/bin/$(Configuration)/</IntermediatePackDir>
+    <PublishDir>$(IntermediatePackDir)$(TargetFramework)/</PublishDir>
+    <NuspecProperties>publishDir=$([MSBuild]::NormalizeDirectory($(IntermediatePackDir)))</NuspecProperties>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Bam.Net\_lib\bam.net.core\bam.net.core.csproj" />
+    <ProjectReference Include="..\..\_lib\bam.remote\bam.remote.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ConsoleActions" />
+  </ItemGroup>
+  <Target Name="PublishAll" BeforeTargets="GenerateNuspec">
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Bam.Net\_lib\bam.net.core\bam.net.core.csproj" />
-      <ProjectReference Include="..\..\_lib\bam.remote\bam.remote.csproj" />
+      <_TargetFramework Include="$(TargetFrameworks)" />
+      <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="Publish" Properties="TargetFramework=%(_TargetFramework.Identity)" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="ConsoleActions" />
-    </ItemGroup>
-    
-    
+  </Target>
 </Project>
