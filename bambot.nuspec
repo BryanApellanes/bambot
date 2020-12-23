@@ -1,7 +1,7 @@
 ﻿<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>bambot</id>
-    <version>1.0.5-test+5b01c7b</version>
+    <version>1.0.5-test+7a5e04c</version>
     <authors>Bryan Apellanes</authors>
     <description>bambot</description>
   </metadata>

@@ -3,9 +3,10 @@
     <TargetFramework>net5.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <PackageId>bambot</PackageId>
-    <Version>1.0.5-test+5b01c7b</Version>
+    <Version>1.0.5-test+7a5e04c</Version>
     <Authors>Bryan Apellanes</Authors>
     <Company>ThreeHeadz</Company>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <NuspecFile>bambot.nuspec</NuspecFile>
     <IntermediatePackDir>$(MSBuildProjectDirectory)/bin/$(Configuration)/</IntermediatePackDir>
