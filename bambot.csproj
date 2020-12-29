@@ -3,7 +3,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <PackageId>bambot</PackageId>
-    <Version>1.0.5-test+7a5e04c</Version>
+    <Version>1.0.5-test+0a8ef3d</Version>
     <Authors>Bryan Apellanes</Authors>
     <Company>ThreeHeadz</Company>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
