@@ -18,10 +18,16 @@
     <ProjectReference Include="..\..\_lib\bam.remote\bam.remote.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ConsoleActions" />
+    <PackageReference Include="PuppeteerSharp" Version="2.0.4" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="PuppeteerSharp" Version="2.0.4" />
+    <Compile Remove="ConsoleActions\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="ConsoleActions\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ConsoleActions\**" />
   </ItemGroup>
   <Target Name="PublishAll" BeforeTargets="GenerateNuspec">
     <ItemGroup>

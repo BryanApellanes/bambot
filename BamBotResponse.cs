@@ -13,8 +13,31 @@ namespace Bam.Net.Application
         {
             Data = Data;
         }
-        
-        public new T Data { get; set; }
+
+        private T _data;
+        public new T Data
+        {
+            get
+            {
+                if (_data != null)
+                {
+                    return _data;
+                }
+
+                if (base.Data != null)
+                {
+                    return (T)base.Data;
+                }
+
+                return default(T);
+            }
+            
+            set
+            {
+                _data = value;
+                base.Data = value;
+            }
+        }
     }
     
     public class BamBotResponse

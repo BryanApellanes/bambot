@@ -17,7 +17,7 @@ using InterSystems.Data.CacheClient.Gateway;
 namespace Bam.Net.Application
 {
     [Serializable]
-    public class ConsoleActions : CommandLineTool
+    public class ServerControlActions : CommandLineTool
     {
         public ServiceProxyServer ServiceProxyServer { get; set; }
         
@@ -30,7 +30,7 @@ namespace Bam.Net.Application
 
             foreach (HostPrefix hostPrefix in ServiceProxyServer.HostPrefixes)
             {
-                OutLineFormat("\t{0}", ConsoleColor.Cyan, hostPrefix.ToString());
+                Message.PrintLine("\t{0}", ConsoleColor.Cyan, hostPrefix.ToString());
             }
             Pause("Bambot service started");
         }
