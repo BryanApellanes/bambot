@@ -13,6 +13,12 @@
     <PublishDir>$(IntermediatePackDir)$(TargetFramework)/</PublishDir>
     <NuspecProperties>publishDir=$([MSBuild]::NormalizeDirectory($(IntermediatePackDir)))</NuspecProperties>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>\opt\bam\build\debug\bambot</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>\opt\bam\build\release\bambot</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Bam.Net\_lib\bam.net.core\bam.net.core.csproj" />
     <ProjectReference Include="..\..\_lib\bam.remote\bam.remote.csproj" />
