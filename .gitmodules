@@ -1,0 +1,6 @@
+[submodule "submodules/bam.core"]
+	path = submodules/bam.core
+	url = https://github.com/BryanApellanes/Bam.Core.git
+[submodule "submodules/bam.remote"]
+	path = submodules/bam.remote
+	url = https://github.com/BryanApellanes/Bam.Remote.git

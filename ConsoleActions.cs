@@ -11,7 +11,7 @@ using Bam.Net.Server;
 using Bam.Net.Services;
 using Bam.Net.Services.Automation;
 using Bam.Net.Testing;
-using InterSystems.Data.CacheClient.Gateway;
+//using InterSystems.Data.CacheClient.Gateway;
 
 
 namespace Bam.Net.Application
@@ -26,11 +26,11 @@ namespace Bam.Net.Application
         {
             ConsoleLogger logger = new ConsoleLogger();
             ApplicationServiceRegistry appRegistry = BambotServiceRegistry.ForCurrentProcessMode();
-            ServiceProxyServer = appRegistry.ServeRegistry(HostPrefix.FromBamProcessConfig().ToArray(), logger);
+            ServiceProxyServer = appRegistry.ServeRegistry(HostBinding.FromBamProcessConfig().ToArray(), logger);
 
-            foreach (HostPrefix hostPrefix in ServiceProxyServer.HostPrefixes)
+            foreach (HostBinding hostPrefix in ServiceProxyServer.HostBindings)
             {
-                OutLineFormat("\t{0}", ConsoleColor.Cyan, hostPrefix.ToString());
+                Message.PrintLine("\t{0}", ConsoleColor.Cyan, hostPrefix.ToString());
             }
             Pause("Bambot service started");
         }
