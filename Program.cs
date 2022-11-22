@@ -9,7 +9,7 @@ using Bam.Net.Testing;
 namespace Bam.Net.Application
 {
     [Serializable]
-    public class Program : DeployableCommandLineTool
+    public class Program_bak : DeployableCommandLineTool
     {
         static void Main(string[] args)
         {
