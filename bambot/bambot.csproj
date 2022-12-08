@@ -30,7 +30,8 @@
     <PackageReference Include="PuppeteerSharp" Version="2.0.4" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="submodules\bam.remote\bam.remote.csproj" />
+    <ProjectReference Include="..\submodules\bam.core\bam.core\bam.core.csproj" />
+    <ProjectReference Include="..\submodules\bam.remote\bam.remote.csproj" />
   </ItemGroup>
   <Target Name="PublishAll" BeforeTargets="GenerateNuspec">
     <ItemGroup>
