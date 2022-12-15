@@ -24,9 +24,6 @@
     <None Remove="submodules\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ConsoleActions" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="PuppeteerSharp" Version="2.0.4" />
   </ItemGroup>
   <ItemGroup>
