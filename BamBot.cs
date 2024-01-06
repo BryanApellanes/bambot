@@ -1,12 +1,12 @@
 using System;
 using Bam.Net.Services;
-using Bam.Net.Services.Automation;
+//using Bam.Net.Services.Automation;
 using Bam.Remote.Etc;
 
 namespace Bam.Net.Application
 {
     [Proxy("bambot")]
-    public class BamBot: DeployableCommandLineTool, IEtcCredentialManager
+    public class BamBot//: DeployableCommandLineTool, IEtcCredentialManager
     {
         public BamBot(IEtcCredentialManager etcCredentialManager = null)
         {
@@ -14,9 +14,9 @@ namespace Bam.Net.Application
         }
         
         protected IEtcCredentialManager EtcCredentialManager { get; set; }
-        
+/*        
         [Inject]
-        public CommandService CommandService { get; set; }
+        public CommandService CommandService { get; set; }*/
 
         [Exclude]
         public EtcUser AddUser(string userName, string password)

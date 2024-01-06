@@ -9,11 +9,11 @@ using Bam.Net.Testing;
 namespace Bam.Net.Application
 {
     [Serializable]
-    public class Program : DeployableCommandLineTool
+    public class Program// : DeployableCommandLineTool
     {
         static void Main(string[] args)
         {
-            TryWritePid(true);
+/*            TryWritePid(true);
             IsolateMethodCalls = false;
             if (!ExecuteMain(args, (a) =>
             {
@@ -22,7 +22,7 @@ namespace Bam.Net.Application
             }))
             {
                 Interactive();
-            };
+            };*/
         }
     }
 }

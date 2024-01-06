@@ -1,11 +1,11 @@
 using System;
 using System.Reflection;
-using Bam.Net.Automation;
+//using Bam.Net.Automation;
 using Bam.Net.CoreServices;
 using Bam.Net.Services;
-using Bam.Net.Services.Automation;
+//using Bam.Net.Services.Automation;
 using System.Linq;
-using Bam.Net.Profiguration;
+//using Bam.Net.Profiguration;
 
 namespace Bam.Net.Application
 {
@@ -59,12 +59,12 @@ namespace Bam.Net.Application
         
         public static ServiceRegistry Create(Action<ServiceRegistry> configure = null)
         {
-            ServiceRegistry result = ForProcess(appSvcReg =>
+            ServiceRegistry result = new ServiceRegistry(); /*ForProcess(appSvcReg =>
             {
                 appSvcReg.For<CommandService>().Use<CommandService>();
                 appSvcReg.For<IApplicationNameProvider>().Use<ProcessApplicationNameProvider>();
                 appSvcReg.For<JobManagerService>().Use<JobManagerService>();
-            });
+            });*/
             configure?.Invoke(result);
 
             return result;
