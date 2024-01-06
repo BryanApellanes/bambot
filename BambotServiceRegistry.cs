@@ -10,11 +10,11 @@ using Bam.Net.Profiguration;
 namespace Bam.Net.Application
 {
     [ServiceRegistryContainer]
-    public class BambotServiceRegistry : ApplicationServiceRegistry
+    public class BambotServiceRegistry : ServiceRegistry
     {
         public const string ApplicationName = "Bambot";
 
-        public static ApplicationServiceRegistry ForCurrentProcessMode()
+        public static ServiceRegistry ForCurrentProcessMode()
         {
             ProcessModes current = ProcessMode.Current.Mode;
             MethodInfo creator = typeof(BambotServiceRegistry).GetMethods().FirstOrDefault(m =>
@@ -29,7 +29,7 @@ namespace Bam.Net.Application
 
             if (creator != null)
             {
-                return (ApplicationServiceRegistry) creator.Invoke(null, null);
+                return (ServiceRegistry) creator.Invoke(null, null);
             }
 
             return Dev();
@@ -37,29 +37,29 @@ namespace Bam.Net.Application
         
         
         [ServiceRegistryLoader(ApplicationName, ProcessModes.Dev)]
-        public static ApplicationServiceRegistry Dev()
+        public static ServiceRegistry Dev()
         {
              // customize for Dev
             return Create();
         }
         
         [ServiceRegistryLoader(ApplicationName, ProcessModes.Test)]
-        public static ApplicationServiceRegistry Test()
+        public static ServiceRegistry Test()
         {
             // customize for Test
             return Create();
         }
         
         [ServiceRegistryLoader(ApplicationName, ProcessModes.Prod)]
-        public static ApplicationServiceRegistry Prod()
+        public static ServiceRegistry Prod()
         {
             // customize for Prod
             return Create();
         }
         
-        public static ApplicationServiceRegistry Create(Action<ApplicationServiceRegistry> configure = null)
+        public static ServiceRegistry Create(Action<ServiceRegistry> configure = null)
         {
-            ApplicationServiceRegistry result = ForProcess(appSvcReg =>
+            ServiceRegistry result = ForProcess(appSvcReg =>
             {
                 appSvcReg.For<CommandService>().Use<CommandService>();
                 appSvcReg.For<IApplicationNameProvider>().Use<ProcessApplicationNameProvider>();
