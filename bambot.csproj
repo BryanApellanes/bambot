@@ -20,12 +20,10 @@
     <OutputPath>\opt\bam\build\bambot\release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bam.base\bam.base\bam.base.csproj" />
     <ProjectReference Include="..\bam.remote\bam.remote.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="PuppeteerSharp" Version="2.0.4" />
-    <PackageReference Include="bam.net.core" Version="1.0.6" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ConsoleActions\**" />
