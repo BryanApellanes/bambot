@@ -1,4 +1,4 @@
-namespace Bam.Net.Application.Listeners
+namespace Bam.Application.Listeners
 {
     public class WebHookResponse
     {

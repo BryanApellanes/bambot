@@ -1,7 +1,7 @@
 using System;
 using Bam.Remote.Etc;
 
-namespace Bam.Net.Application
+namespace Bam.Application
 {
     public class BamBotSetPasswordResponse : BamBotResponse<EtcUser>
     {

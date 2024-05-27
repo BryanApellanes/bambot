@@ -1,4 +1,4 @@
-namespace Bam.Net.Application
+namespace Bam.Application
 {
     public class BamBotUpdateGroupRequest: BamBotRequest
     {

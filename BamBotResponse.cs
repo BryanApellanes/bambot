@@ -1,6 +1,6 @@
 using System;
 
-namespace Bam.Net.Application
+namespace Bam.Application
 {
     public class BamBotResponse<T>: BamBotResponse
     {

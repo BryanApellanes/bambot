@@ -1,13 +1,13 @@
 using System;
 using System.Reflection;
-//using Bam.Net.Automation;
-using Bam.Net.CoreServices;
-using Bam.Net.Services;
-//using Bam.Net.Services.Automation;
+//using Bam.Automation;
+using Bam.CoreServices;
+using Bam.Services;
+//using Bam.Services.Automation;
 using System.Linq;
-//using Bam.Net.Profiguration;
+//using Bam.Profiguration;
 
-namespace Bam.Net.Application
+namespace Bam.Application
 {
     [ServiceRegistryContainer]
     public class BambotServiceRegistry : ServiceRegistry

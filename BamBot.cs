@@ -1,9 +1,9 @@
 using System;
-using Bam.Net.Services;
-//using Bam.Net.Services.Automation;
+using Bam.Services;
+//using Bam.Services.Automation;
 using Bam.Remote.Etc;
 
-namespace Bam.Net.Application
+namespace Bam.Application
 {
     [Proxy("bambot")]
     public class BamBot//: DeployableCommandLineTool, IEtcCredentialManager

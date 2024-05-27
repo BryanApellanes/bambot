@@ -1,6 +1,6 @@
-using Bam.Net.ServiceProxy;
+using Bam.ServiceProxy;
 
-namespace Bam.Net.Application.Listeners
+namespace Bam.Application.Listeners
 {
     public interface IWebHookReceiver
     {

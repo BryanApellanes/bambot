@@ -1,6 +1,6 @@
 using Bam.Remote.Deployment.Data;
 
-namespace Bam.Net.Application.Data
+namespace Bam.Application.Data
 {
     public class BamBotIdentifier: SshHostIdentifier
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bam.Net.CommandLine;
-using Bam.Net.Testing;
+using Bam.CommandLine;
+using Bam.Testing;
 
-namespace Bam.Net.Application
+namespace Bam.Application
 {
     [Serializable]
     public class Program// : DeployableCommandLineTool
