@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bam.CommandLine;
-using Bam.Testing;
+using Bam.Test;
 
 namespace Bam.Application
 {
