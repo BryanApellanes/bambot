@@ -23,7 +23,7 @@
     <ProjectReference Include="..\bam.remote\bam.remote.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="PuppeteerSharp" Version="2.0.4" />
+    <PackageReference Include="PuppeteerSharp" Version="20.0.2" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ConsoleActions\**" />
